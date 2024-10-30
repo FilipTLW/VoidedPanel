@@ -2,7 +2,7 @@ const hyprland = await Service.import('hyprland');
 import options from 'options';
 import { getWorkspaceRules, getWorkspacesForMonitor, isWorkspaceIgnored } from '../helpers';
 import { Monitor, Workspace } from 'types/service/hyprland';
-import { getAppIcon, getWsColor, renderClassnames, renderLabel } from '../utils';
+import { getAppIcon, getWsColor, renderClassnames, renderClassNamesWithLastClassName, renderLabel } from '../utils';
 import { range } from 'lib/utils';
 import { BoxWidget } from 'lib/types/widget';
 import { WorkspaceIconMap } from 'lib/types/workspace';
@@ -127,7 +127,7 @@ export const occupiedWses = (monitor: number): BoxWidget => {
                                 css:
                                     `margin: 0rem ${0.375 * spacing}rem;` +
                                     `${showWsIcons && !matugen ? getWsColor(wsIconMap, i, smartHighlight, monitor, monitors) : ''}`,
-                                class_name: renderClassnames(
+                                class_name: renderClassNamesWithLastClassName(
                                     showIcons,
                                     showNumbered,
                                     numberedActiveIndicator,
@@ -136,6 +136,7 @@ export const occupiedWses = (monitor: number): BoxWidget => {
                                     monitor,
                                     monitors,
                                     i,
+                                    totalWkspcs || 8,
                                 ),
                                 label: renderLabel(
                                     showIcons,

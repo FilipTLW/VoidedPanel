@@ -2,7 +2,7 @@ const hyprland = await Service.import('hyprland');
 
 import { MonitorMap, WorkspaceMap, WorkspaceRule } from 'lib/types/workspace';
 import options from 'options';
-import { Variable } from 'types/variable';
+import { Variable } from 'resource:///com/github/Aylur/ags/variable.js';
 
 const { workspaces, reverse_scroll, ignored } = options.bar.workspaces;
 

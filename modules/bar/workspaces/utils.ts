@@ -157,7 +157,31 @@ export const renderClassnames = (
         return className.trim();
     }
 
-    return 'default';
+    return `default workspace-label-${i}`;
+};
+
+export const renderClassNamesWithLastClassName = (
+    showIcons: boolean,
+    showNumbered: boolean,
+    numberedActiveIndicator: string,
+    showWsIcons: boolean,
+    smartHighlight: boolean,
+    monitor: number,
+    monitors: Monitor[],
+    i: number,
+    totalWkspcs: number,
+): string => {
+    return `
+        ${renderClassnames(
+            showIcons,
+            showNumbered,
+            numberedActiveIndicator,
+            showWsIcons,
+            smartHighlight,
+            monitor,
+            monitors,
+            i,
+        )} ${i === totalWkspcs ? 'workspace-label-last' : ''}`;
 };
 
 export const renderLabel = (

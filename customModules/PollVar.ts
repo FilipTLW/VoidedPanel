@@ -1,7 +1,7 @@
 import GLib from 'gi://GLib?version=2.0';
 import { GenericFunction } from 'lib/types/customModules/generic';
 import { Bind } from 'lib/types/variable';
-import { Variable as VariableType } from 'types/variable';
+import { Variable as VariableType } from 'resource:///com/github/Aylur/ags/variable.js';
 
 /**
  * @param {VariableType<T>} targetVariable - The Variable to update with the function's result.
