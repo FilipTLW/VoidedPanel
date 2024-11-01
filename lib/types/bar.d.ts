@@ -1,5 +1,5 @@
 import { Binding, Connectable } from 'types/service';
-import { Variable } from 'types/variable';
+import { Variable } from 'external/ags-types/types/variable';
 import Box from 'types/widgets/box';
 import Button, { ButtonProps } from 'types/widgets/button';
 import Label from 'types/widgets/label';

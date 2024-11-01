@@ -70,7 +70,7 @@
 
 .workspace-button {
     &:hover label {
-        color: $bar-buttons-workspaces-hover;
+        color: $bar-buttons-workspaces-background;
 
         &.default {
             background-color: $bar-buttons-workspaces-hover;
