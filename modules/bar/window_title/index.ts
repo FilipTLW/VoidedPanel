@@ -2,7 +2,7 @@ const hyprland = await Service.import('hyprland');
 import { BarBoxChild } from 'lib/types/bar';
 import options from 'options';
 import { Attribute, Child } from 'lib/types/widget';
-import { ActiveClient } from 'types/service/hyprland';
+import { ActiveClient } from 'external/ags-types/types/service/hyprland';
 import Label from 'types/widgets/label';
 import { runAsyncCommand, throttledScrollHandler } from 'customModules/utils';
 import Button from 'types/widgets/button';
@@ -55,10 +55,12 @@ const filterTitle = (windowtitle: ActiveClient): Record<string, string> => {
         ['sublime-text', '', 'Sublime Text'],
         ['atom', '', 'Atom'],
         ['android-studio', '󰀴', 'Android Studio'],
-        ['intellij-idea', '', 'IntelliJ IDEA'],
-        ['pycharm', '󱃖', 'PyCharm'],
-        ['webstorm', '󱃖', 'WebStorm'],
-        ['phpstorm', '󱃖', 'PhpStorm'],
+        ['(jetbrains-)?intellij-idea', '', 'IntelliJ IDEA'],
+        ['(jetbrains-)?pycharm', '', 'PyCharm'],
+        ['(jetbrains-)?webstorm', '', 'WebStorm'],
+        ['(jetbrains-)?phpstorm', '', 'PhpStorm'],
+        ['(jetbrains-)?rider', '', 'Rider'],
+        ['(jetbrains-)?clion', '', 'CLion'],
         ['eclipse', '', 'Eclipse'],
         ['netbeans', '', 'NetBeans'],
         ['docker', '', 'Docker'],
@@ -66,6 +68,7 @@ const filterTitle = (windowtitle: ActiveClient): Record<string, string> => {
         ['neovim', '', 'Neovim'],
         ['neovide', '', 'Neovide'],
         ['emacs', '', 'Emacs'],
+        ['godot', '', 'Godot'],
 
         // Communication Tools
         ['slack', '󰒱', 'Slack'],
@@ -120,8 +123,7 @@ const filterTitle = (windowtitle: ActiveClient): Record<string, string> => {
         ['(.+)', '󰣆', `${windowtitle.class.charAt(0).toUpperCase() + windowtitle.class.slice(1)}`],
     ];
 
-    const foundMatch = windowTitleMap.find((wt) => RegExp(wt[0]).test(windowtitle.class.toLowerCase()));
-
+    const foundMatch = windowTitleMap.find((wt) => RegExp(`^${wt[0]}$`).test(windowtitle.class.toLowerCase()));
     // return the default icon if no match is found or
     // if the array element matched is not of size 3
     if (!foundMatch || foundMatch.length !== 3) {
